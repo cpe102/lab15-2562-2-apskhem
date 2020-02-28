@@ -15,6 +15,7 @@ int main(){
 	double data[N][M] = {};
 	double result[N] = {};
 	double *dPtr = data[0];
+	
 	randData(dPtr,N,M);
 	showData(dPtr,N,M);
 	
@@ -25,3 +26,30 @@ int main(){
 }
 
 //Write definition of randData(), showData() and findRowSum()
+void randData(double *dPtr, int row, int col) {
+    for (short i = 0; i < col; i++) {
+        for (short j = 0; j < row; j++) {
+           *(dPtr+j) = (rand()%101) / 100.00;
+        }
+        dPtr++;
+    }
+}
+
+void findRowSum(const double *dPtr, double *result, int row, int col) {
+    for (short i = 0; i < col; i++) {
+        for (short j = 0; j < row; j++) {
+            *(result+i) += *(dPtr+j);
+        }
+        dPtr++;
+    }
+}
+
+void showData(double *inputPtr, int row, int col) {
+    for (short i = 0; i < row; i++) {
+       for (short j = 0; j < col; j++) {
+           cout << *(inputPtr+j) << "\t";
+        }
+        inputPtr++;
+        cout << endl;
+    }
+}
